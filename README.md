@@ -1,4 +1,4 @@
-# spectrum_analyzer
+# Doppler Demo
 HTML5 Spectrum Analyzer and Tone Generator
 
 
