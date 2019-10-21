@@ -1,33 +1,64 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no">
-  <title>Spectrum Analyzer</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Active-Rx</title>
 </head>
-<body>
-<div id="waterfall"></div>
-<script src="waterfall.js"></script>
-<script src="main.js"></script>
 
-<button id="tonetest">START</button>
-<button id="tonetest_stop">tonetest stop</button>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="style.css">
+
+<body>
+      
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-content" style="max-width:1500px">
+    
+    <!-- Header -->
+    <div class="w3-opacity">
+      <header class="w3-center">
+        <h1><b>ACTIVE-RX</b></h1>
+        <p><b>Doppler Activity Sensing On A Smartphone</b></p>
+        <br>
+      </header>
+    </div>
+
+    <!-- Canvas -->
+    <div id="waterfall"></div>
+    <script src="waterfall.js"></script>
+    <script src="main.js"></script>
+            
+    <button id="tonetest">START</button>
+    <button id="tonetest_stop">STOP</button>  
+
+  </div>
+
+    <!-- Footer -->
+  <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge" style="margin-top:84px">
+    <p class="w3-medium">Created by Ubiquitous Computing Laboratory, Paul G. Allen School of Computer Science and Engineering, 
+      University of Washington - Seattle</p>
+  </footer>
+
 </body>
 </html>
 
 
+
+
+
 <!-- <script>
   function beginAudioCapture() {
-
     var AudioContext = window.AudioContext || window.webkitAudioContext;
     var context = new AudioContext();
     var processor = context.createScriptProcessor(1024, 1, 1);
     processor.connect(context.destination);
-
     var handleSuccess = function (stream) {
       var input = context.createMediaStreamSource(stream);
       input.connect(processor);
-
       var recievedAudio = false;
       processor.onaudioprocess = function (e) {
         // This will be called multiple times per second.
@@ -38,11 +69,7 @@
         }
       };
     };
-
     navigator.mediaDevices.getUserMedia({audio: true, video: false})
       .then(handleSuccess);
   }
 </script> -->
-
-</body>
-</html>
