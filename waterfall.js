@@ -1,6 +1,6 @@
 var Waterfall = (function(options){
   var id = options.id || 'waterfall';
-  var width = options.width || 1024;
+  var width = options.width || window.innerWidth;
   var height = options.height || 400;
   var background = "rgba(0, 0, 0, 1)";
 
@@ -66,6 +66,7 @@ var Waterfall = (function(options){
   // }, false);
 
   var draw = function() {
+
     window.requestAnimationFrame(draw);
     frequencies = new Uint8Array(analyser.frequencyBinCount);
     analyser.getByteFrequencyData(frequencies);
@@ -78,7 +79,7 @@ var Waterfall = (function(options){
     for(var i = lowi; i < highi; i++) {
       var mag = frequencies[i];
 
-      // mag = Math.max(0, mag - 20);
+      // mag = Math.min(255, mag + 5);
       mag = Math.floor(Math.pow(mag/255, 0.3)*255);
 
       // canvasContext.fillStyle = "rgba(0,"+mag+",0,1)";

@@ -1,5 +1,6 @@
 
-carrier_freq = 18000;
+carrier_freq = 18500;
+
 
 (function(window, document, undefined) {
   function gotStream(stream) {
@@ -22,7 +23,6 @@ carrier_freq = 18000;
     window.waterfall = waterfall;
     document.getElementById('tonetest').addEventListener("click", function(){
       seq = [[carrier_freq, 1000000]];
-      console.log(seq);
       waterfall.sequence(seq);
     });
 
