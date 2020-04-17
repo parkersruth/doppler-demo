@@ -1,5 +1,6 @@
 
-carrier_freq = 18500;
+carrier_freq = 21000;
+spect_radius = 1000;
 
 
 (function(window, document, undefined) {
@@ -17,13 +18,16 @@ carrier_freq = 18500;
 
     var waterfall = Waterfall({
       stream: streamSource,
-      context: context
+      context: context,
+      // audiofile: './audio/sweep18.5k.wav'
+      audiofile: './audio/stereochirp.wav'
+      // audiofile: './audio/440.wav'
     });
 
     window.waterfall = waterfall;
     document.getElementById('tonetest').addEventListener("click", function(){
-      seq = [[carrier_freq, 1000000]];
-      waterfall.sequence(seq);
+      // waterfall.sequence(seq);
+      waterfall.play();
     });
 
     document.getElementById('tonetest_stop').addEventListener("click", function(){
