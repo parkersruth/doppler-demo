@@ -68,27 +68,17 @@ const stopRecord = async () => {
 //store audio file and corresponding notes file to the server
 const saveAudio = async () => {
   console.log("HELLO");
-    // if (audio) {
-    //   var reader = new FileReader();
-	  // reader.addEventListener("loadend", function() {
-		//   var dv = new DataView(reader.result);
-		//   document.getElementById("dv").innerHTML = ("data view size " + dv.byteLength);
-	  // });
-	  // var text = reader.readAsArrayBuffer(audio['audioBlob']);
+  console.log("records.js audio: " + audio);
+  send_audio(dir+fname, audio);
 
-
-      console.log("records.js audio: " + audio);
-      send_audio(dir+fname, audio);
-
-      // TODO incorporate notes
-      // var notes = {patient: document.getElementById('person').value,
-      //              exerciseName: document.getElementById('exerciseName').value,
-      //              repetitions: document.getElementById('repetitions').value,
-      //              phoneLocation: document.getElementById('phoneLocation').value,
-      //              phoneModel: document.getElementById('phoneModel').value,
-      //              location: document.getElementById('location').value,
-      //              comments: document.getElementById('comments').value};
-      //
-      // file_write(dir+fnotes, JSON.stringify(notes));
-    }
+  // TODO incorporate notes
+  // var notes = {patient: document.getElementById('person').value,
+  //              exerciseName: document.getElementById('exerciseName').value,
+  //              repetitions: document.getElementById('repetitions').value,
+  //              phoneLocation: document.getElementById('phoneLocation').value,
+  //              phoneModel: document.getElementById('phoneModel').value,
+  //              location: document.getElementById('location').value,
+  //              comments: document.getElementById('comments').value};
+  //
+  // file_write(dir+fnotes, JSON.stringify(notes));
 };
