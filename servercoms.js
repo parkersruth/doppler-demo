@@ -46,6 +46,7 @@ function send_audio(fn, blob){
     cache:false,
     success: function(data){
       console.log("send_audio success!");
+      console.log("file name " + fn);
       console.log(data);
     }
   });

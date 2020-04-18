@@ -57,6 +57,7 @@ const stopRecord = async () => {
         audio = await recorder.stop();
 
         recorder = null;
+        console.log(audio);
     }
 };
 
@@ -67,8 +68,7 @@ const stopRecord = async () => {
 
 //store audio file and corresponding notes file to the server
 const saveAudio = async () => {
-  console.log("HELLO");
-  console.log("records.js audio: " + audio);
+  console.log("audio: " + audio);
   send_audio(dir+fname, audio);
 
   // TODO incorporate notes

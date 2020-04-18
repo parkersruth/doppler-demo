@@ -17,18 +17,15 @@ VIEW_ON = false;
 
     streamSource = context.createMediaStreamSource(stream);
 
-    // real time FFT visualization
+    // tone generation and FFT visualization
     var waterfall = Waterfall({
       stream: streamSource,
       context: context,
-      // audiofile: './audio/sweep18.5k.wav'
       audiofile: './audio/chirp.wav'
-      // audiofile: './audio/440.wav'
     });
 
     window.waterfall = waterfall;
     document.getElementById('tonetest').addEventListener("click", function(){
-      // waterfall.sequence(seq);
       waterfall.play();
       startRecord();
       document.getElementById('tonetest').disabled = true;
