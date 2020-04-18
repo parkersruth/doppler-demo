@@ -2,14 +2,16 @@
 center_freq = 21000;
 spect_radius = 1000;
 
+audiofile = './audio/chirp.wav';
+
 (function(window, document, undefined) {
   function gotStream(stream) {
     if (typeof AudioContext !== "undefined") {
-      context = new AudioContext();
+      window.context = new AudioContext();
     } else if (typeof webkitAudioContext !== "undefined") {
-      context = new webkitAudioContext();
+      window.context = new webkitAudioContext();
     } else if (typeof mozAudioContext !== "undefined") {
-      context = new mozAudioContext();
+      window.context = new mozAudioContext();
   } else {
   }
 
@@ -19,7 +21,6 @@ spect_radius = 1000;
     var waterfall = Waterfall({
       stream: streamSource,
       context: context,
-      audiofile: './audio/chirp.wav'
     });
 
     // window.waterfall = waterfall;

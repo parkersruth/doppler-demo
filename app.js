@@ -19,11 +19,12 @@ var savebtn = document.getElementById("savebtn");
 
 // https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia */
 function startTone(){
-	// TODO start tone
+	audio = new Audio(audiofile);
+	audio.play();
 }
 
 function stopTone() {
-	// TODO stop tone
+	audio.pause();
 }
 
 function startRecording() {

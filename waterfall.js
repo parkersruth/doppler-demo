@@ -8,7 +8,6 @@ var Waterfall = (function(options){
   var audioStream = options.stream;
   var audioContext = options.context;
 
-  var audiofile = options.audiofile;
   var audio;
 
   var target = document.getElementById(id);
@@ -68,22 +67,6 @@ var Waterfall = (function(options){
     }
   };
 
-  var play = function(freq){
-    audio = new Audio(audiofile);
-    audio.play();
-  };
-
-  var stop = function(){
-    audio.pause();
-  };
-
   draw();
-
-
-  return {
-    play: play,
-    stop: stop,
-    pxToFreq: pxToFreq,
-  };
 
 });
