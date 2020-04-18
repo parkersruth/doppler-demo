@@ -52,12 +52,14 @@ const startRecord = async() => {
     // document.getElementById("start").disabled = true;
     // document.getElementById("stop").disabled = false;
 };
-const stopRecord = () => {
+const stopRecord = async () => {
     if (recorder) {
         audio = await recorder.stop();
 
         recorder = null;
         console.log('in stopRecord, audio = ' + audio);
+
+        document.getElementById('savebtn').disabled = false;
     }
 };
 
@@ -67,7 +69,7 @@ const stopRecord = () => {
 // };
 
 //store audio file and corresponding notes file to the server
-const saveAudio = () => {
+const saveAudio = async () => {
   console.log("in saveAudio, audio = " + audio);
   send_audio(dir+fname, audio);
 
