@@ -6,10 +6,6 @@ Record audio from the browser using streams and promises
 var dir = "./data/";
 var fname = "temp";
 
-const freq = 20000;
-const volume = 0.5;
-const type = 'sine';
-
 const recordAudio = () =>
   new Promise(async resolve => {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -38,11 +34,7 @@ const recordAudio = () =>
     resolve({ start, stop });
   });
 
-var audioCtx = new (window.AudioContext || window.webkitAudioContext || window.audioContext);
-var osc;
-
 let recorder = null;
-const actionButton = document.getElementById('record');
 let audio = null;
 
 const startRecord = async() => {
@@ -75,6 +67,7 @@ const stopRecord = async () => {
 
 //store audio file and corresponding notes file to the server
 const saveAudio = async () => {
+  console.log("HELLO");
     if (audio) {
       var reader = new FileReader();
 	  reader.addEventListener("loadend", function() {
