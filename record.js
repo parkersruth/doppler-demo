@@ -35,7 +35,7 @@ const recordAudio = () =>
   });
 
 let recorder = null;
-let audio = null;
+let audiodat = null;
 
 const startRecord = async() => {
     var start_time = new Date();
@@ -54,10 +54,10 @@ const startRecord = async() => {
 };
 const stopRecord = async () => {
     if (recorder) {
-        audio = await recorder.stop();
+        audiodata = await recorder.stop();
 
         recorder = null;
-        console.log('in stopRecord, audio = ' + audio);
+        console.log('in stopRecord, audiodata = ' + audiodata);
 
         document.getElementById('savebtn').disabled = false;
     }
@@ -65,38 +65,38 @@ const stopRecord = async () => {
 
 //play back audio in the browser to test whether it has recorded
 // const playAudio = async () => {
-//     if (audio && typeof audio.play === "function") audio.play();
+//     if (audiodata && typeof audiodata.play === "function") audiodata.play();
 // };
 
 
-const saveAudio = async () => {
-  if (audio) {
-    var reader = new FileReader();
-    reader.addEventListener("loadend", function() {
-      var dv = new DataView(reader.result);
-      document.getElementById("dv").innerHTML = ("data view size " + dv.byteLength);
-    });
-    var text = reader.readAsArrayBuffer(audio['audioBlob']);
-
-
-    console.log("records.js audio: " + audio);
-    send_audio(dir+fname, audio);
-
-    // var notes = {patient: document.getElementById('person').value,
-    //               exerciseName: document.getElementById('exerciseName').value,
-    //               repetitions: document.getElementById('repetitions').value,
-    //               phoneLocation: document.getElementById('phoneLocation').value,
-    //               phoneModel: document.getElementById('phoneModel').value,
-    //               location: document.getElementById('location').value,
-    //               comments: document.getElementById('comments').value};
-    //
-    // file_write(dir+fnotes, JSON.stringify(notes));
-  }
-};
-
-
-// //store audio file and corresponding notes file to the server
 // const saveAudio = async () => {
-//   console.log("in saveAudio, audio = " + audio);
-//   send_audio(dir+fname, audio);
+//   if (audiodata) {
+//     var reader = new FileReader();
+//     reader.addEventListener("loadend", function() {
+//       var dv = new DataView(reader.result);
+//       document.getElementById("dv").innerHTML = ("data view size " + dv.byteLength);
+//     });
+//     var text = reader.readAsArrayBuffer(audiodata['audioBlob']);
+//
+//
+//     console.log("records.js audiodata: " + audiodata);
+//     send_audio(dir+fname, audiodata);
+//
+//     // var notes = {patient: document.getElementById('person').value,
+//     //               exerciseName: document.getElementById('exerciseName').value,
+//     //               repetitions: document.getElementById('repetitions').value,
+//     //               phoneLocation: document.getElementById('phoneLocation').value,
+//     //               phoneModel: document.getElementById('phoneModel').value,
+//     //               location: document.getElementById('location').value,
+//     //               comments: document.getElementById('comments').value};
+//     //
+//     // file_write(dir+fnotes, JSON.stringify(notes));
+//   }
 // };
+
+
+//store audio file and corresponding notes file to the server
+const saveAudio = async () => {
+  console.log("in saveAudio, audiodata = " + audiodata);
+  send_audio(dir+fname, audiodata);
+};
