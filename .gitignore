@@ -1,6 +1,5 @@
 .DS_Store
 *.swp
-audio/*
 *.npy
 __pycache__/
 .ipynb_checkpoints/
