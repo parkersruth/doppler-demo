@@ -1,8 +1,6 @@
 
-carrier_freq = 21000;
+center_freq = 21000;
 spect_radius = 1000;
-
-VIEW_ON = false;
 
 (function(window, document, undefined) {
   function gotStream(stream) {

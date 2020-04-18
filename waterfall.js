@@ -49,8 +49,8 @@ var Waterfall = (function(options){
     canvasContext.drawImage(canvasContext.canvas, 0, 0, width, height - moveBy, 0, moveBy, width, height - moveBy);
 
     // the range is the carrier frequency +- 500 Hz
-    lowi = Math.round(frequencies.length / 22000 * (carrier_freq - spect_radius));
-    highi = Math.round(frequencies.length / 22000 * (carrier_freq + spect_radius));
+    lowi = Math.round(frequencies.length / 22000 * (center_freq - spect_radius));
+    highi = Math.round(frequencies.length / 22000 * (center_freq + spect_radius));
 
     for(var i = lowi; i < highi; i++) {
       var mag = frequencies[i];
