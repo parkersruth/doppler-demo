@@ -2,6 +2,7 @@
 carrier_freq = 21000;
 spect_radius = 1000;
 
+VIEW_ON = false;
 
 (function(window, document, undefined) {
   function gotStream(stream) {
@@ -16,11 +17,12 @@ spect_radius = 1000;
 
     streamSource = context.createMediaStreamSource(stream);
 
+    // real time FFT visualization
     var waterfall = Waterfall({
       stream: streamSource,
       context: context,
       // audiofile: './audio/sweep18.5k.wav'
-      audiofile: './audio/stereochirp.wav'
+      audiofile: './audio/chirp.wav'
       // audiofile: './audio/440.wav'
     });
 
@@ -28,10 +30,13 @@ spect_radius = 1000;
     document.getElementById('tonetest').addEventListener("click", function(){
       // waterfall.sequence(seq);
       waterfall.play();
+      startRecord();
     });
 
     document.getElementById('tonetest_stop').addEventListener("click", function(){
       waterfall.stop();
+      stopRecord();
+      saveAudio();
     });
 
   }
