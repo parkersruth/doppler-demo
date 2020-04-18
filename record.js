@@ -70,8 +70,8 @@ const startRecord = async() => {
     recorder.start();
 
     //disable and enable buttons
-    document.getElementById("start").disabled = true;
-    document.getElementById("stop").disabled = false;
+    // document.getElementById("start").disabled = true;
+    // document.getElementById("stop").disabled = false;
 };
 const stopRecord = async () => {
     if (recorder) {
