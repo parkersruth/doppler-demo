@@ -22,26 +22,26 @@ spect_radius = 1000;
       audiofile: './audio/chirp.wav'
     });
 
-    window.waterfall = waterfall;
-    document.getElementById('tonetest').addEventListener("click", function(){
-      waterfall.play();
-      startRecord();
-      document.getElementById('tonetest').disabled = true;
-      document.getElementById('savebtn').disabled = true;
-      document.getElementById('tonetest_stop').disabled = false;
-    });
-
-    document.getElementById('tonetest_stop').addEventListener("click", function(){
-      waterfall.stop();
-      stopRecord();
-      document.getElementById('tonetest').disabled = false;
-      document.getElementById('tonetest_stop').disabled = true;
-    });
-
-    document.getElementById('savebtn').addEventListener("click", function(){
-      saveAudio();
-      document.getElementById('savebtn').disabled = true;
-    });
+    // window.waterfall = waterfall;
+    // document.getElementById('tonetest').addEventListener("click", function(){
+    //   waterfall.play();
+    //   startRecord();
+    //   document.getElementById('tonetest').disabled = true;
+    //   document.getElementById('savebtn').disabled = true;
+    //   document.getElementById('tonetest_stop').disabled = false;
+    // });
+    //
+    // document.getElementById('tonetest_stop').addEventListener("click", function(){
+    //   waterfall.stop();
+    //   stopRecord();
+    //   document.getElementById('tonetest').disabled = false;
+    //   document.getElementById('tonetest_stop').disabled = true;
+    // });
+    //
+    // document.getElementById('savebtn').addEventListener("click", function(){
+    //   saveAudio();
+    //   document.getElementById('savebtn').disabled = true;
+    // });
 
 
   }

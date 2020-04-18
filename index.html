@@ -21,14 +21,10 @@
 
         <!-- Canvas -->
         <div visible=false id="waterfall"></div>
-        <script src="waterfall.js"></script>
-        <script src="record.js"></script>
-        <script src="servercoms.js"></script>
-        <script src="main.js"></script>
 
-        <button id="tonetest">START</button>
-        <button id="tonetest_stop" disabled>STOP</button>
-        <button id="savebtn" disabled>SAVE</button>
+        <button id="startbtn" onclick="startRecording()">START</button>
+        <button id="stopbtn" disabled onclick="stopRecording()">STOP</button>
+        <button id="savebtn" disabled onclick="saveRecording()">SAVE</button>
 
         <!-- Footer -->
         <footer style="margin-top:84px">
@@ -40,3 +36,10 @@
     </center>
 </body>
 </html>
+
+<script src="waterfall.js"></script>
+<script src="app.js"></script>
+<script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+<!-- <script src="record.js"></script> -->
+<script src="servercoms.js"></script>
+<script src="main.js"></script>
