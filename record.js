@@ -80,7 +80,7 @@ const saveAudio = async () => {
 
 
     console.log("records.js audio: " + audio);
-    send_audio(dir+faudio, audio);
+    send_audio(dir+fname, audio);
 
     // var notes = {patient: document.getElementById('person').value,
     //               exerciseName: document.getElementById('exerciseName').value,
