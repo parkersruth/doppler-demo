@@ -68,13 +68,13 @@ const stopRecord = async () => {
 //store audio file and corresponding notes file to the server
 const saveAudio = async () => {
   console.log("HELLO");
-    if (audio) {
-      var reader = new FileReader();
-	  reader.addEventListener("loadend", function() {
-		  var dv = new DataView(reader.result);
-		  document.getElementById("dv").innerHTML = ("data view size " + dv.byteLength);
-	  });
-	  var text = reader.readAsArrayBuffer(audio['audioBlob']);
+    // if (audio) {
+    //   var reader = new FileReader();
+	  // reader.addEventListener("loadend", function() {
+		//   var dv = new DataView(reader.result);
+		//   document.getElementById("dv").innerHTML = ("data view size " + dv.byteLength);
+	  // });
+	  // var text = reader.readAsArrayBuffer(audio['audioBlob']);
 
 
       console.log("records.js audio: " + audio);
