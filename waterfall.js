@@ -1,13 +1,8 @@
 var Waterfall = (function(options){
   var id = options.id || 'waterfall';
 
-  if (VIEW_ON) {
-    var width = options.width || 1000;
-    var height = options.height || 400;
-  } else {
-    var width = 0;
-    var height = 0;
-  }
+  var width = options.width || 1000;
+  var height = options.height || 400;
   var background = "rgba(0, 0, 0, 1)";
 
   var audioStream = options.stream;
