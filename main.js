@@ -22,8 +22,8 @@ audiofile = './audio/chirp.wav';
       stream: streamSource,
       context: context,
     });
-
-    // window.waterfall = waterfall;
+    window.waterfall = waterfall;
+    
     // document.getElementById('tonetest').addEventListener("click", function(){
     //   waterfall.play();
     //   startRecord();
