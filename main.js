@@ -31,12 +31,16 @@ VIEW_ON = false;
       // waterfall.sequence(seq);
       waterfall.play();
       startRecord();
+      document.getElementById('tonetest').disabled = true;
+      document.getElementById('tonetest_stop').disabled = false;
     });
 
     document.getElementById('tonetest_stop').addEventListener("click", function(){
       waterfall.stop();
       stopRecord();
       saveAudio();
+      document.getElementById('tonetest').disabled = false;
+      document.getElementById('tonetest_stop').disabled = true;
     });
 
   }

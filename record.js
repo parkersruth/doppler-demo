@@ -80,14 +80,15 @@ const saveAudio = async () => {
       console.log("records.js audio: " + audio);
       send_audio(dir+fname, audio);
 
-      var notes = {patient: document.getElementById('person').value,
-                   exerciseName: document.getElementById('exerciseName').value,
-                   repetitions: document.getElementById('repetitions').value,
-                   phoneLocation: document.getElementById('phoneLocation').value,
-                   phoneModel: document.getElementById('phoneModel').value,
-                   location: document.getElementById('location').value,
-                   comments: document.getElementById('comments').value};
-
-      file_write(dir+fnotes, JSON.stringify(notes));
+      // TODO incorporate notes
+      // var notes = {patient: document.getElementById('person').value,
+      //              exerciseName: document.getElementById('exerciseName').value,
+      //              repetitions: document.getElementById('repetitions').value,
+      //              phoneLocation: document.getElementById('phoneLocation').value,
+      //              phoneModel: document.getElementById('phoneModel').value,
+      //              location: document.getElementById('location').value,
+      //              comments: document.getElementById('comments').value};
+      //
+      // file_write(dir+fnotes, JSON.stringify(notes));
     }
 };
