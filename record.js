@@ -49,22 +49,9 @@ const startRecord = async() => {
     var start_time = new Date();
     var timestamp = start_time.getFullYear() + "_" + start_time.getMonth() + "_" + start_time.getDate() + "_" + start_time.getHours() + "_" + start_time.getMinutes() + "_" + start_time.getSeconds();
 
-    faudio = timestamp + "_audio.wav";
-    fnotes = timestamp + "_audioNotes.json";
-
     //play tone
-    osc = audioCtx.createOscillator();
-    var gainNode = audioCtx.createGain();
 
-    osc.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
-
-    gainNode.gain.value = volume;
-    osc.frequency.value = freq;
-    osc.type = type;
-
-    if (osc.noteOn) osc.noteOn(0); //old browsers
-    if (osc.start) osc.start(); //new browsers
+    // TODO play tone here
 
     recorder = await recordAudio();
     recorder.start();
@@ -77,22 +64,14 @@ const stopRecord = async () => {
     if (recorder) {
         audio = await recorder.stop();
 
-        //stop tone
-        if (osc.noteOff) osc.noteOff(0); //old browsers
-        if (osc.stop) osc.stop(); //new browsers
-
         recorder = null;
-
-        //disable and enable buttons
-        document.getElementById("stop").disabled = true;
-        document.getElementById("start").disabled = false;
     }
 };
 
 //play back audio in the browser to test whether it has recorded
-const playAudio = async () => {
-    if (audio && typeof audio.play === "function") audio.play();
-};
+// const playAudio = async () => {
+//     if (audio && typeof audio.play === "function") audio.play();
+// };
 
 //store audio file and corresponding notes file to the server
 const saveAudio = async () => {
