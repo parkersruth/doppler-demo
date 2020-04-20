@@ -112,7 +112,7 @@ function saveRecording() {
 	
 	var notes = {
 	 	name: document.getElementById("name").value,
-	 	activity: document.getElementByid("activity").value,
+	 	activity: document.getElementById("activity").value,
 	 	repetitions: document.getElementById("repetitions").value,
 	 	device: document.getElementById("repetitions").value,
 		tone_origin: tone_value,
