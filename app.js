@@ -1,5 +1,6 @@
 var dir = "./data/";
-var fname = "test.wav";
+var faudio = "";
+var fnotes = "";
 
 //webkitURL is deprecated but nevertheless
 URL = window.URL || window.webkitURL;
@@ -31,6 +32,9 @@ function startRecording() {
 	var start_time = new Date();
 	var timestamp = start_time.getFullYear() + "_" + start_time.getMonth() + "_" + start_time.getDate() + "_" + start_time.getHours() + "_" + start_time.getMinutes() + "_" + start_time.getSeconds();
 
+	faudio = timestamp + "_audio.wav"
+	fnotes = timestamp + "_audioNotes.json"
+	
 	startTone();
 	startbtn.disabled = true; stopbtn.disabled = false; savebtn.disabled = true;
 
@@ -99,21 +103,21 @@ function saveRecording() {
 
 	//console.log("app.js audio " + text);
 
-	send_audio(dir+fname, blob);
+	send_audio(dir+faudio, blob);
 
-	// if (document.getElementById("googlepixel").checked) model = "Google Pixel";
-	//
-	// var notes = {
-	// 	patient: document.getElementById('person').value,
-	// 	exerciseName: exercise,
-	// 	repetitions: document.getElementById('repetitions').value,
-	// 	phoneLocation: phoneLoc,
-	// 	phoneModel: model,
-	// 	location: document.getElementById('location').value,
-	// 	comments: document.getElementById('comments').value
-	// };
-	//
-	// file_write(dir+fnotes, JSON.stringify(notes));
+	//if (document.getElementById("googlepixel").checked) model = "Google Pixel";
+	
+	var notes = {
+	 	patient: document.getElementById('person').value,
+	 	exerciseName: exercise,
+	 	repetitions: document.getElementById('repetitions').value,
+	 	phoneLocation: phoneLoc,
+	 	phoneModel: model,
+	 	location: document.getElementById('location').value,
+	 	comments: document.getElementById('comments').value
+	};
+	
+	file_write(dir+fnotes, JSON.stringify(notes));
 }
 
 function processBlob() {
