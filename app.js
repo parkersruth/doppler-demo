@@ -107,14 +107,16 @@ function saveRecording() {
 
 	//if (document.getElementById("googlepixel").checked) model = "Google Pixel";
 	
+	var tone_value = "same device";
+	if (document.getElementById("off").checked)) tone_value = "external_device";
+	
 	var notes = {
-	 	patient: document.getElementById('person').value,
-	 	exerciseName: exercise,
-	 	repetitions: document.getElementById('repetitions').value,
-	 	phoneLocation: phoneLoc,
-	 	phoneModel: model,
-	 	location: document.getElementById('location').value,
-	 	comments: document.getElementById('comments').value
+	 	name: document.getElementById("name").value,
+	 	activity: document.getElementByid("activity").value,
+	 	repetitions: document.getElementById("repetitions").value,
+	 	device: document.getElementById("repetitions").value,
+		tone_origin: tone_value,
+	 	notes: document.getElementById("notes").value
 	};
 	
 	file_write(dir+fnotes, JSON.stringify(notes));
