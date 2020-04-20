@@ -108,7 +108,7 @@ function saveRecording() {
 	//if (document.getElementById("googlepixel").checked) model = "Google Pixel";
 	
 	var tone_value = "same device";
-	if (document.getElementById("off").checked)) tone_value = "external_device";
+	if (document.getElementById("off").checked) tone_value = "external_device";
 	
 	var notes = {
 	 	name: document.getElementById("name").value,
