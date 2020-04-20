@@ -1,34 +1,28 @@
 
-carrier_freq = 18500;
+center_freq = 21000;
+spect_radius = 1000;
 
+audiofile = './audio/chirp.wav';
 
 (function(window, document, undefined) {
   function gotStream(stream) {
     if (typeof AudioContext !== "undefined") {
-      context = new AudioContext();
+      window.context = new AudioContext();
     } else if (typeof webkitAudioContext !== "undefined") {
-      context = new webkitAudioContext();
+      window.context = new webkitAudioContext();
     } else if (typeof mozAudioContext !== "undefined") {
-      context = new mozAudioContext();
+      window.context = new mozAudioContext();
   } else {
   }
 
     streamSource = context.createMediaStreamSource(stream);
 
+    // tone generation and FFT visualization
     var waterfall = Waterfall({
       stream: streamSource,
-      context: context
+      context: context,
     });
-
     window.waterfall = waterfall;
-    document.getElementById('tonetest').addEventListener("click", function(){
-      seq = [[carrier_freq, 1000000]];
-      waterfall.sequence(seq);
-    });
-
-    document.getElementById('tonetest_stop').addEventListener("click", function(){
-      waterfall.stop();
-    });
 
   }
 
