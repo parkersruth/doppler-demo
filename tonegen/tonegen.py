@@ -95,7 +95,7 @@ if __name__ == '__main__':
     # savestereo('./audio/stereochirp.wav', left, right, fs)
 
 
-    duration = 20
+    duration =60
     chirp_freq = 10
     chirp_dur = 1 / chirp_freq
     N = int(chirp_dur * fs)
@@ -107,7 +107,7 @@ if __name__ == '__main__':
     chirp = ss.chirp(t, fcenter-fradius, np.max(t), fcenter+fradius, method='linear')
     chirp *= ss.get_window(('tukey', 0.2), N)
     signal = np.tile(chirp, int(duration / chirp_dur))
-    savestereo('../audio/chirp.wav', signal, np.zeros_like(signal), fs)
+    savestereo('./audio/chirp.wav', signal, np.zeros_like(signal), fs)
     np.save('chirp.npy', signal)
 
 
