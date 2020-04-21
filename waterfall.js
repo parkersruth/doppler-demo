@@ -1,21 +1,14 @@
 var Waterfall = (function(options){
   var id = options.id || 'waterfall';
+
   var width = options.width || 1000;
   var height = options.height || 400;
   var background = "rgba(0, 0, 0, 1)";
 
   var audioStream = options.stream;
   var audioContext = options.context;
-  var gainNode = audioContext.createGain ? audioContext.createGain() : audioContext.createGainNode();
 
-  gainNode.gain.value = 0.1;
-
-  var osci = audioContext.createOscillator();
-  osci.type = "sine";
-  gainNode.connect(audioContext.destination);
-  osci.start ? osci.start(0) : osci.noteOn(0);
-
-  var timeout = null;
+  var audio;
 
   var target = document.getElementById(id);
   var canvas = document.createElement('canvas');
@@ -31,7 +24,6 @@ var Waterfall = (function(options){
   canvasContext.fillRect(0, 0, width, height);
 
   var analyser = audioContext.createAnalyser();
-  // analyser.fftSize = 8192;
   analyser.fftSize = 4096;
   audioStream.connect(analyser);
 
@@ -48,23 +40,6 @@ var Waterfall = (function(options){
     for(var i=0; i<events.length; i++){elem.addEventListener(events[i], f)};
   };
 
-  // addEventListeners(canvas, "mousemove touchmove", function(e){
-  //   e.preventDefault();
-  //   info.innerText = pxToFreq(e.touches ? e.touches[0].pageX : e.offsetX);
-  // }, false);
-
-  // addEventListeners(canvas, "mousedown touchstart", function(e){
-  //   e.preventDefault();
-  //   var x = pxToFreq(e.touches ? e.touches[0].pageX : e.offsetX);
-  //   info.innerText = x;
-  //   play(x);
-  // }, false);
-
-  // addEventListeners(canvas, "mouseup touchend", function(e){
-  //   e.preventDefault();
-  //   stop();
-  // }, false);
-
   var draw = function() {
 
     window.requestAnimationFrame(draw);
@@ -73,8 +48,8 @@ var Waterfall = (function(options){
     canvasContext.drawImage(canvasContext.canvas, 0, 0, width, height - moveBy, 0, moveBy, width, height - moveBy);
 
     // the range is the carrier frequency +- 500 Hz
-    lowi = Math.round(frequencies.length / 22000 * (carrier_freq - 300));
-    highi = Math.round(frequencies.length / 22000 * (carrier_freq + 300));
+    lowi = Math.round(frequencies.length / 22000 * (center_freq - spect_radius));
+    highi = Math.round(frequencies.length / 22000 * (center_freq + spect_radius));
 
     for(var i = lowi; i < highi; i++) {
       var mag = frequencies[i];
@@ -92,36 +67,6 @@ var Waterfall = (function(options){
     }
   };
 
-  var sequence = function(seq){
-    if(seq.length==0){
-      stop();
-    }else{
-      var fd = seq.shift();
-      if(fd[0]==0) stop();
-      else play(fd[0]);
-      timout = setTimeout(function(){sequence(seq)}, fd[1]);
-    }
-  };
-
-  var play = function(freq){
-    //osci.disconnect();
-    osci.frequency.value = freq;
-    osci.connect(gainNode);
-  };
-
-  var stop = function(){
-    if(timeout) clearTimeout(timeout);
-    osci.disconnect();
-  };
-
   draw();
-
-
-  return {
-    play: play,
-    stop: stop,
-    sequence: sequence,
-    pxToFreq: pxToFreq,
-  };
 
 });
