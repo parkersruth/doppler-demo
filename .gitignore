@@ -1,2 +1,3 @@
 .DS_Store
-
+.ipynb_notebooks/
+__pycache__/
